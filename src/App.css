@@ -1,38 +1,234 @@
-.App {
-  text-align: center;
+:root {
+  --main-color: rgb(207, 81, 81);
+  /* --dark-gray-color: rgb(129, 127, 127);    */
+  --gray-color: rgb(189, 185, 185);
+  --white-color: white;
+  --white-selected-color: rgb(236, 236, 236);
+  --white-clicked-color: rgb(221, 221, 221);
+  --bg-color: white;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif; 
+  background-color: var(--bg-color);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+header {
+  margin: 0;
+  color: var(--bg-color);
+  background-color: var(--main-color);
+  height: 1.5em;
+  font-size: 50px;
+  padding: 0 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+h1 {
+  font-size: 105%;
+  font-weight: normal;
+  position: absolute;
+  margin: 0;
+  left: 100px;
+  top: 0;
+}
+
+.uni-wrapper {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, 230px);
+  grid-auto-rows: 300px;
+  padding: 6px 25px;
+  justify-content: center;
+}
+
+.select-elem {
+  background-color: var(--bg-color);
+  box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
+  border-radius: 4px;
+  transition: all 140ms;
+  overflow: hidden;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.fac-dep-spec .select-elem {
+  height: 100px;
+}
+
+.select-elem:hover,
+.select-elem:focus {
+  background-color: var(--white-selected-color);
+}
+
+.uni:active {
+  background-color: var(--white-clicked-color);
+}
+
+.uni h2 {
+  font-size: 170%;
+  font-weight: bolder;
+  top: 50%;
+}
+
+.uni h3 {
+  font-size: 105%;
+  font-weight: normal;
+  top: 62%;
+  padding: 0 10%;
+}
+
+.uni h2,
+.uni h3,
+.name {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  padding: 0 0.7em;
+}
+
+.utils {
+  width: 100%;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 20px 5px;
 }
 
-.App-link {
-  color: #61dafb;
+.search-bar {
+  font-family: inherit;
+  width: minmax(180px, 50%);
+  outline: none;
+  border: none;
+  border-bottom: 2px solid var(--gray-color);
+  font-size: 1.7em;
+  transition: border-bottom 100ms ease-out;
 }
 
-@keyframes App-logo-spin {
-  from {
+.search-bar:focus {
+  border-bottom: 2px solid var(--main-color);
+}
+
+.logo-header {
+  position: relative;
+  height: 80%;
+  top: 10%;
+  left: 0;
+  /* box-shadow: 0 0 8px 4px var(--white-color); */
+  border-radius: 15%;
+  border: solid 3px white;
+}
+
+.uni-image {
+  max-height: 45%;
+  margin-top: 5%;
+  position: absolute;
+}
+
+.star-image {
+  height: 1.5em;
+}
+
+.star-rating {
+  font-size: 1.5em;
+  padding-left: 10px;
+  padding-top: 0;
+  padding-bottom: 3px;
+}
+
+.star-wrapper {
+  position: absolute;
+  bottom: 7%;
+}
+
+.fac-dep-spec {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10%;
+  padding: 30px 6%;
+}
+
+@media only screen and (max-width: 950px) {
+  .fac-dep-spec {
+      gap: 3%;
+      padding-left: 4%;
+      padding-right: 4%;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .fac-dep-spec {
+      grid-template-columns: 1fr;
+  }
+}
+
+.comment {
+  position: relative;
+  margin: 10px;
+  padding: 10px;
+  background-color: var(--bg-color);
+  box-shadow: rgba(3, 8, 20, 0.1) 0 0.10rem 0.3rem;
+  border-radius: 4px;
+}
+
+.comment h2 {
+  font-size: 150%;
+  font-weight: bolder;
+  color: var(--gray-color);
+  margin: 15px;
+}
+
+.comment p {
+  font-size: 125%;
+  font-weight: normal;
+  margin: 10px;
+  margin-bottom: 2em;
+}
+
+.comment .star-wrapper {
+  position: absolute;
+  right: 2em;
+  top: 22px;
+}
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid var(--main-color);
+  border-color: var(--main-color) transparent var(--main-color) transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  100% {
     transform: rotate(360deg);
   }
 }
